@@ -5,9 +5,7 @@ import { landRover, moveRover } from "./src/vehicles/rover/rover";
 const mappedArea = mapArea(5, 5);
 
 //Initial position 🪂
-console.log(mappedArea);
 console.log(landRover(mappedArea));
 
-// LMLMLMLMM
 //Moving rover 🕹️
 console.log(moveRover("LMLMLMLMM", mappedArea));
