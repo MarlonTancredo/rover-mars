@@ -4,6 +4,8 @@
 
 👉 Use `npm install` on the terminal to install all the dependencies.
 
+👉 Use `npm start` on the terminal to start the project.
+
 🧪 Make the tests using `npm test` or `npm run test:watch`.
 
 ##
