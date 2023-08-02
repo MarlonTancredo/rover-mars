@@ -30,6 +30,7 @@ console.log(displayRoverPosition(mappedArea)); //Display the rover in the final 
 🚀 `rover.ts`
 
 ```TypeScript
+//🔥 Initial coordinates 🔥
 let x = 1; //Set x value for landRover()
 let y = 2; //Set y value for landRover()
 let direction = north; //Set the direction value for landRover()
