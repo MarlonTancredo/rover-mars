@@ -1,13 +1,8 @@
-import { landRover } from "../src/vehicles/rover/rover";
+import { landRover, moveRover } from "../src/vehicles/rover/rover";
+import { mapArea } from "../src/mars/terrain";
 
-describe("test the returns of landRover function", () => {
-  const map = [
-    [" ", " ", " ", " ", " "],
-    [" ", " ", " ", " ", " "],
-    [" ", " ", " ", " ", " "],
-    [" ", " ", " ", " ", " "],
-    [" ", " ", " ", " ", " "],
-  ];
+describe("landRover()", () => {
+  const map = mapArea(5, 5);
 
   const arrayReturned = [
     [" ", " ", " ", " ", " "],
@@ -19,5 +14,21 @@ describe("test the returns of landRover function", () => {
 
   test("should return the area mapped with the rover landed", () => {
     expect(landRover(map)).toStrictEqual(arrayReturned);
+  });
+});
+
+describe("moveRover()", () => {
+  const map = mapArea(5, 5);
+  const roverLandedMap = landRover(map);
+
+  const mapReturned = [
+    [" ", " ", "⬆️", " ", " "],
+    [" ", "X", "X", " ", " "],
+    [" ", "X", "X", " ", " "],
+    [" ", " ", " ", " ", " "],
+    [" ", " ", " ", " ", " "],
+  ];
+  test("should return the area with rover and the rover path", () => {
+    expect(moveRover("LMLMLMLMM", roverLandedMap)).toStrictEqual(mapReturned);
   });
 });
