@@ -7,10 +7,10 @@ const arrows = {
 const { northLabel, southLabel, westLabel, eastLabel } = arrows;
 
 const coordinates = {
-  north: "north",
-  south: "south",
-  west: "west",
-  east: "east",
+  north: "N",
+  south: "S",
+  west: "W",
+  east: "E",
 };
 const { north, south, west, east } = coordinates;
 
