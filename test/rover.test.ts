@@ -12,7 +12,7 @@ describe("landRover()", () => {
     [" ", " ", " ", " ", " "],
   ];
 
-  test("should return the area mapped with the rover landed", () => {
+  it("should return the area mapped with the rover landed", () => {
     expect(landRover(map)).toStrictEqual(arrayReturned);
   });
 });
@@ -23,12 +23,12 @@ describe("moveRover()", () => {
 
   const mapReturned = [
     [" ", " ", "⬆️", " ", " "],
-    [" ", "X", "X", " ", " "],
-    [" ", "X", "X", " ", " "],
+    [" ", " ", " ", " ", " "],
+    [" ", " ", " ", " ", " "],
     [" ", " ", " ", " ", " "],
     [" ", " ", " ", " ", " "],
   ];
-  test("should return the area with rover and the rover path", () => {
+  it("should return the area with rover and the rover path", () => {
     expect(moveRover("LMLMLMLMM", roverLandedMap)).toStrictEqual(mapReturned);
   });
 });

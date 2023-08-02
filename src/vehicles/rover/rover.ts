@@ -22,7 +22,7 @@ export const moveRover = (command: string, mappedArea: string[][]) => {
 };
 
 const clearPreviousIndex = (mappedArea: string[][]) => {
-  mappedArea[x][y] = "X";
+  mappedArea[x][y] = " ";
 };
 
 const splitCommand = (command: string, mappedArea: string[][]) => {
