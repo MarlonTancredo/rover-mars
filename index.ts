@@ -10,5 +10,5 @@ landRover(mappedArea);
 console.log(displayRoverPosition(mappedArea));
 
 //Moving rover 🕹️
-moveRover("L", mappedArea);
+moveRover("LMLMLMLMM", mappedArea);
 console.log(displayRoverPosition(mappedArea));
