@@ -10,7 +10,7 @@
 
 ##
 
-👨‍💻` index.ts`
+👨‍💻 `index.ts`
 
 ```TypeScript
 landRover(mappedArea); //Landing the rover 🪂
@@ -23,4 +23,14 @@ moveRover("M", mappedArea); //Move the rover to the direction where the rover is
 
 console.log(displayRoverPosition(mappedArea)); //Display the rover in the final position. 📺
 
+```
+
+##
+
+🚀 `rover.ts`
+
+```TypeScript
+let x = 1; //Set x value for landRover()
+let y = 2; //Set y value for landRover()
+let direction = north; //Set the direction value for landRover()
 ```
