@@ -6,13 +6,13 @@ import { landingRover, movingRover } from "./src/vehicles/rover/controllers";
 let mappedArea = mapArea(5, 5);
 
 //Initial coordinate
-const x = 3;
-const y = 3;
-const direction = "E";
+const x = 1;
+const y = 2;
+const direction = "N";
 
 //Passing map to rover
 getMap(mappedArea);
 
 landingRover(x, y, direction);
 
-movingRover("MMRMMRMRRM");
+movingRover("LMLMLMLMM");
