@@ -1,6 +1,6 @@
 import { mapArea } from "../src/mars/terrain";
-import { getMap } from "../src/vehicles/roverA/rover";
-import { landingRover, movingRover } from "../src/vehicles/roverA/controllers";
+import { getMap } from "../src/vehicles/rover/rover";
+import { landingRover, movingRover } from "../src/vehicles/rover/controllers";
 
 describe("landingRover() ", () => {
   //Arrange
@@ -33,12 +33,12 @@ describe("movingRover() calling many movingRover()", () => {
     expect(movingRover("LMLMLMLMM")).toBe("1 3 N");
   });
 
-  //Arrange Act Assert
+  //Act Assert
   it("should return 1 2 W", () => {
     expect(movingRover("L")).toBe("1 3 W");
   });
 
-  //Arrange Act Assert
+  //Act Assert
   it("should return 1 4 W", () => {
     expect(movingRover("M")).toBe("1 4 W");
   });
