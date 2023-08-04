@@ -35,16 +35,27 @@ const currCoordinates: CurrentCoordinates = {
 };
 let { currentX, currentY, currentDirection, currentMap } = currCoordinates;
 
-export const returnPosition = () => {
-  return `${currentX + 1} ${currentY + 1} ${currentDirection}`;
-};
-
 export const returnLandingPosition = () => {
   return `${currentX} ${currentY} ${currentDirection}`;
 };
 
+export const returnPosition = () => {
+  return `${currentX + 1} ${currentY + 1} ${currentDirection}`;
+};
+
+export const getReversedMapCoordinate = () => {
+  currentMap.forEach((array, x) => {
+    array.forEach((element, y) => {
+      if (element !== " ") {
+        currentX = x;
+        currentY = y;
+      }
+    });
+  });
+};
+
 export const reverseMap = () => {
-  return currentMap.forEach((array) => {
+  currentMap.map((array) => {
     array.reverse();
   });
 };
@@ -94,9 +105,9 @@ export const splitCommand = (command: string) => {
 
 export const checkCommand = (command: string) => {
   if (currentDirection === east) {
-    //check the edge
+    //check the right edge.
     if (command === "M" && currentY === currentMap[currentY].length - 1) {
-      console.log("You reach the edge limit!");
+      console.log("You reach the y limit!");
       currentY = currentY;
       currentDirection = east;
     } else if (command === "M") {
@@ -110,9 +121,9 @@ export const checkCommand = (command: string) => {
   }
   //WEST ⬅️
   else if (currentDirection === west) {
-    //check the edge
+    //check the left edge.
     if (command === "M" && currentY === 0) {
-      console.log("You reach the edge limit!");
+      console.log("You reach the y limit!");
       currentY = currentY;
       currentDirection = west;
     } else if (command === "M") {
@@ -126,9 +137,9 @@ export const checkCommand = (command: string) => {
   }
   //SOUTH ⬇️
   else if (currentDirection === south) {
-    //check the edge
+    //check the north edge.
     if (command === "M" && currentX === currentMap.length - 1) {
-      console.log("You reach the edge limit!");
+      console.log("You reach the x limit!");
       currentX = currentX;
       currentDirection = south;
     } else if (command === "M") {
@@ -142,9 +153,9 @@ export const checkCommand = (command: string) => {
   }
   //NORTH ⬆️
   else if (currentDirection === north) {
-    //check the edge
+    //check the south edge.
     if (command === "M" && currentX === 0) {
-      console.log("You reach the edge limit!");
+      console.log("You reach the x limit!");
       currentX = currentX;
       currentDirection = north;
     } else if (command === "M") {
