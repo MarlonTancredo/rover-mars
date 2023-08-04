@@ -1,3 +1,16 @@
+type Coordinates = {
+  x: number;
+  y: number;
+  direction: string;
+};
+
+type CurrentCoordinates = {
+  currentX: number;
+  currentY: number;
+  currentDirection: string;
+  currentMap: string[][];
+};
+
 const arrows = {
   northLabel: "⬆️",
   southLabel: "⬇️",
@@ -14,105 +27,133 @@ const coordinates = {
 };
 const { north, south, west, east } = coordinates;
 
-//🔥 Initial coordinates 🔥
-let x = 1;
-let y = 2;
-let direction = north;
+const currCoordinates: CurrentCoordinates = {
+  currentX: 0,
+  currentY: 0,
+  currentDirection: "",
+  currentMap: [],
+};
+let { currentX, currentY, currentDirection, currentMap } = currCoordinates;
 
-export const landRover = (mappedArea: string[][]) => {
-  mappedArea[x][y] = direction;
-  return `${x + 1} ${y + 1} ${direction}`;
+export const returnPosition = () => {
+  return `${currentX + 1} ${currentY + 1} ${currentDirection}`;
 };
 
-export const moveRover = (command: string, mappedArea: string[][]) => {
-  splitCommand(command, mappedArea);
-  return `${x + 1} ${y + 1} ${direction}`;
+export const returnLandingPosition = () => {
+  return `${currentX} ${currentY} ${currentDirection}`;
 };
 
-const clearPreviousIndex = (mappedArea: string[][]) => {
-  mappedArea[x][y] = " ";
-};
-
-const splitCommand = (command: string, mappedArea: string[][]) => {
-  const commandSplitted = command.split("");
-  commandSplitted.forEach((command: string) => {
-    clearPreviousIndex(mappedArea);
-    checkDirection(command, mappedArea);
+export const reverseMap = () => {
+  return currentMap.forEach((array) => {
+    array.reverse();
   });
-  return mappedArea;
 };
 
-const checkDirection = (command: string, mappedArea: string[][]) => {
-  if (direction === east) {
-    if (command === "M" && y === mappedArea[y].length - 1) {
-      y = 0;
-      direction = east;
-      mappedArea[x][y] = eastLabel;
+export const printCurrentMap = () => {
+  return currentMap;
+};
+
+export const landRover = ({ x, y, direction }: Coordinates) => {
+  return { x, y, direction };
+};
+
+export const getMap = (map: string[][]) => {
+  currentMap = map;
+};
+
+export const clearCurrentIndex = (): void => {
+  currentMap[currentX][currentY] = " ";
+};
+
+export const updateMap = () => {
+  switch (currentDirection) {
+    case "N":
+      return (currentMap[currentX][currentY] = northLabel);
+    case "S":
+      return (currentMap[currentX][currentY] = southLabel);
+    case "W":
+      return (currentMap[currentX][currentY] = westLabel);
+    case "E":
+      return (currentMap[currentX][currentY] = eastLabel);
+  }
+};
+
+export const updateCoordinate = ({ x, y, direction }: Coordinates) => {
+  currentX = x;
+  currentY = y;
+  currentDirection = direction;
+};
+
+export const getCommand = (command: string) => {
+  return command;
+};
+
+export const splitCommand = (command: string) => {
+  return command.split("");
+};
+
+export const checkCommand = (command: string) => {
+  if (currentDirection === east) {
+    //check the edge
+    if (command === "M" && currentY === currentMap[currentY].length - 1) {
+      console.log("You reach the edge limit!");
+      currentY = currentY;
+      currentDirection = east;
     } else if (command === "M") {
-      y = y + 1;
-      direction = east;
-      mappedArea[x][y] = eastLabel;
+      currentY = currentY + 1;
+      currentDirection = east;
     } else if (command === "R") {
-      direction = south;
-      mappedArea[x][y] = southLabel;
+      currentDirection = south;
     } else if (command === "L") {
-      direction = north;
-      mappedArea[x][y] = northLabel;
+      currentDirection = north;
     }
   }
   //WEST ⬅️
-  else if (direction === west) {
-    if (command === "M" && y === 0) {
-      y = mappedArea.length - 1;
-      direction = west;
-      mappedArea[x][y] = westLabel;
+  else if (currentDirection === west) {
+    //check the edge
+    if (command === "M" && currentY === 0) {
+      console.log("You reach the edge limit!");
+      currentY = currentY;
+      currentDirection = west;
     } else if (command === "M") {
-      y = y - 1;
-      direction = west;
-      mappedArea[x][y] = westLabel;
+      currentY = currentY - 1;
+      currentDirection = west;
     } else if (command === "R") {
-      direction = north;
-      mappedArea[x][y] = northLabel;
+      currentDirection = north;
     } else if (command === "L") {
-      direction = south;
-      mappedArea[x][y] = southLabel;
+      currentDirection = south;
     }
   }
   //SOUTH ⬇️
-  else if (direction === south) {
-    if (command === "M" && x === mappedArea.length - 1) {
-      x = 0;
-      direction = south;
-      mappedArea[x][y] = southLabel;
+  else if (currentDirection === south) {
+    //check the edge
+    if (command === "M" && currentX === currentMap.length - 1) {
+      console.log("You reach the edge limit!");
+      currentX = currentX;
+      currentDirection = south;
     } else if (command === "M") {
-      x = x + 1;
-      direction = south;
-      mappedArea[x][y] = southLabel;
+      currentX = currentX + 1;
+      currentDirection = south;
     } else if (command === "R") {
-      direction = west;
-      mappedArea[x][y] = westLabel;
+      currentDirection = west;
     } else if (command === "L") {
-      direction = east;
-      mappedArea[x][y] = eastLabel;
+      currentDirection = east;
     }
   }
   //NORTH ⬆️
-  else if (direction === north) {
-    if (command === "M" && x === 0) {
-      x = mappedArea.length - 1;
-      direction = north;
-      mappedArea[x][y] = northLabel;
+  else if (currentDirection === north) {
+    //check the edge
+    if (command === "M" && currentX === 0) {
+      console.log("You reach the edge limit!");
+      currentX = currentX;
+      currentDirection = north;
     } else if (command === "M") {
-      x = x - 1;
-      direction = north;
-      mappedArea[x][y] = northLabel;
+      currentX = currentX - 1;
+      currentDirection = north;
     } else if (command === "R") {
-      direction = east;
-      mappedArea[x][y] = eastLabel;
+      currentDirection = east;
     } else if (command === "L") {
-      direction = west;
-      mappedArea[x][y] = westLabel;
+      currentDirection = west;
     }
   }
-  return mappedArea;
 };
