@@ -13,25 +13,24 @@
 👨‍💻 `index.ts`
 
 ```TypeScript
-landRover(mappedArea); //Landing the rover 🪂
+//set map size 🗺️
+let mappedArea = mapArea(5, 5); //Set map with different sizes.
 
-moveRover("L", mappedArea); //Move the rover to left. 🕹️
+//Initial coordinate
+const x = 1;
+const y = 2;
+const direction = "N";
 
-moveRover("R", mappedArea); //Move the rover to the right. 🕹️
+//Passing map to rover
+getMap(mappedArea);
 
-moveRover("M", mappedArea); //Move the rover to the direction where the rover is pointed. 🕹️
+landingRover(x, y, direction); //Landing the rover 🪂
 
-console.log(displayRoverPosition(mappedArea)); //Display the rover in the final position. 📺
+movingRover("LMLMLMLMM");
 
-```
+movingRover("L"); //turn the rover to left. 🕹️
 
-##
+movingRover("R");  //Turn the rover to the right. 🕹️
 
-🚀 `rover.ts`
-
-```TypeScript
-//🔥 Initial coordinates 🔥
-let x = 1; //Set x value for landRover()
-let y = 2; //Set y value for landRover()
-let direction = north; //Set the direction value for landRover()
+movingRover("M"); //Move the rover to the direction where the rover is pointed. 🕹️
 ```
