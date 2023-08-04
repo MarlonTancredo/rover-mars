@@ -39,11 +39,11 @@ export const returnLandingPosition = () => {
   return `${currentX} ${currentY} ${currentDirection}`;
 };
 
-export const returnPosition = () => {
+export const returnCurrentPosition = () => {
   return `${currentX + 1} ${currentY + 1} ${currentDirection}`;
 };
 
-export const getReversedMapCoordinate = () => {
+export const updateReversedCoordinate = () => {
   currentMap.forEach((array, x) => {
     array.forEach((element, y) => {
       if (element !== " ") {
@@ -76,7 +76,7 @@ export const clearCurrentIndex = (): void => {
   currentMap[currentX][currentY] = " ";
 };
 
-export const updateMap = () => {
+export const replaceCurrDirectionWithLabel = () => {
   switch (currentDirection) {
     case "N":
       return (currentMap[currentX][currentY] = northLabel);
