@@ -10,14 +10,15 @@ import {
   returnLandingPosition,
   landRover,
   updateCoordinate,
+  getReversedMapCoordinate,
 } from "./rover";
 
 //Landing Rover 🪂
 export const landingRover = (x: number, y: number, direction: string) => {
   updateCoordinate(landRover({ x, y, direction }));
   updateMap();
-  console.log("Rover landed! ", printCurrentMap());
   console.log(returnLandingPosition());
+  console.log("Rover landed! ", printCurrentMap());
   return returnLandingPosition();
 };
 
@@ -27,10 +28,12 @@ export const movingRover = (command: string) => {
     clearCurrentIndex();
     checkCommand(command);
     updateMap();
-    console.log(`${index + 1}`, printCurrentMap());
+    console.log(`${index}`, printCurrentMap());
   });
   reverseMap();
-  console.log(`Rover stopped!: `, printCurrentMap());
+  getReversedMapCoordinate();
   console.log(returnPosition());
+  console.log(`Rover stopped!: `, printCurrentMap());
+  updateMap();
   return returnPosition();
 };
