@@ -1,14 +1,24 @@
 import { mapArea } from "./src/mars/terrain";
-import { landRover, moveRover } from "./src/vehicles/rover/rover";
-import { displayRoverPosition } from "./src/vehicles/parts/screen";
+import { getMap } from "./src/vehicles/rover/rover";
+import { landingRover, movingRover } from "./src/vehicles/rover/controllers";
 
-//set terrain size 🗺️
-const mappedArea = mapArea(5, 5);
+//set map size 🗺️
+let mappedArea = mapArea(5, 5);
 
-//Initial position 🪂
-landRover(mappedArea);
-console.log(displayRoverPosition(mappedArea));
+//Initial coordinate
+const x = 1;
+const y = 2;
+const direction = "N";
 
-//Moving rover 🕹️
-moveRover("LMLMLMLMM", mappedArea);
-console.log(displayRoverPosition(mappedArea));
+//Passing map to rover
+getMap(mappedArea);
+
+landingRover(x, y, direction);
+
+movingRover("LMLMLMLMM");
+
+movingRover("L");
+
+movingRover("R");
+
+movingRover("M");
