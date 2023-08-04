@@ -26,7 +26,7 @@ getMap(mappedArea);
 
 landingRover(x, y, direction); //Landing the rover 🪂
 
-movingRover("LMLMLMLMM");
+movingRover("LMLMLMLMM"); //You can also pass a sequence of commands.
 
 movingRover("L"); //turn the rover to left. 🕹️
 
