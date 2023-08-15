@@ -1,36 +1,38 @@
 import { buildMap } from "./src/mars/map";
 import { rover, printRoverPosition } from "./src/vehicles/rover/rover";
 
+export class Rovers {
+  name: string;
+  x: number;
+  y: number;
+  direction: string;
+  map: string[][];
+  command: string;
+  constructor(
+    name: string,
+    x: number,
+    y: number,
+    direction: string,
+    map: string[][],
+    command: string
+  ) {
+    this.name = name;
+    this.x = x;
+    this.y = y;
+    this.direction = direction;
+    this.map = map;
+    this.command = command;
+  }
+}
+
 //Set map size 🗺️
 let map = buildMap(5, 5);
 
 //Rovers
-const roverA = {
-  name: "A",
-  x: 1,
-  y: 2,
-  direction: "N",
-  map: map,
-  command: "LMLMLMLMM",
-};
+const roverA = new Rovers("A", 1, 2, "N", map, "LMLMLMLMM");
+const roverB = new Rovers("B", 3, 3, "E", map, "MMRMMRMRRM");
+const roverC = new Rovers("C", 2, 3, "W", map, "MMR");
 
-const roverB = {
-  name: "B",
-  x: 3,
-  y: 3,
-  direction: "E",
-  map: map,
-  command: "MMRMMRMRRM",
-};
-
-const roverC = {
-  name: "C",
-  x: 2,
-  y: 3,
-  direction: "W",
-  map: map,
-  command: "MMR",
-};
 rover(roverA);
 rover(roverB);
 rover(roverC);
