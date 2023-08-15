@@ -1,7 +1,3 @@
-type Directions = {
-  [key: string]: { [key: string]: string };
-};
-
 type Rover = {
   name: string;
   x: number;
@@ -9,6 +5,21 @@ type Rover = {
   direction: string;
   map: string[][];
   command: string;
+};
+
+type Arrows = {
+  [key: string]: string;
+};
+
+const arrows: Arrows = {
+  W: "⬅️",
+  E: "➡️",
+  N: "⬆️",
+  S: "⬇️",
+};
+
+type Directions = {
+  [key: string]: { [key: string]: string };
 };
 
 const directions: Directions = {
@@ -19,7 +30,7 @@ const directions: Directions = {
 };
 
 const clearPreviousIndex = (x: number, y: number, map: string[][]) => {
-  map[x][y] = " ";
+  map[x][y] = "---";
 };
 
 export const rover = ({ name, x, y, direction, map, command }: Rover) => {
@@ -41,7 +52,7 @@ export const rover = ({ name, x, y, direction, map, command }: Rover) => {
     command[i] === "M"
       ? moveRover()
       : (direction = directions[direction][command[i]]);
-    map[x][y] = `${name} ${direction} `;
+    map[x][y] = `${name} ${arrows[direction]}`;
   }
 
   console.log(name);
