@@ -55,7 +55,6 @@ export const rover = ({ name, x, y, direction, map, command }: Rover) => {
     map[x][y] = `${name} ${arrows[direction]}`;
   }
 
-  console.log(name);
   return `${x} ${y} ${direction}`;
 };
 
