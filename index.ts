@@ -1,7 +1,7 @@
 import { buildMap } from "./src/mars/map";
 import { rover, printRoverPosition } from "./src/vehicles/rover/rover";
 
-export class Rovers {
+class Rovers {
   name: string;
   x: number;
   y: number;
