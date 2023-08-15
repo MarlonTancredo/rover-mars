@@ -5,9 +5,35 @@ import { rover, printRoverPosition } from "./src/vehicles/rover/rover";
 let map = buildMap(5, 5);
 
 //Rovers
-rover("A", 1, 2, "N", map, "LMLMLMLMM");
-rover("B", 3, 3, "E", map, "MMRMMRMRRM");
-rover("C", 2, 3, "W", map, "MMR");
+const roverA = {
+  name: "A",
+  x: 1,
+  y: 2,
+  direction: "N",
+  map: map,
+  command: "LMLMLMLMM",
+};
+
+const roverB = {
+  name: "B",
+  x: 3,
+  y: 3,
+  direction: "E",
+  map: map,
+  command: "MMRMMRMRRM",
+};
+
+const roverC = {
+  name: "C",
+  x: 2,
+  y: 3,
+  direction: "W",
+  map: map,
+  command: "MMR",
+};
+rover(roverA);
+rover(roverB);
+rover(roverC);
 
 //Print rover positions
 printRoverPosition(map);

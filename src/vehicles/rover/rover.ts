@@ -1,6 +1,16 @@
 type Directions = {
   [key: string]: { [key: string]: string };
 };
+
+type Rover = {
+  name: string;
+  x: number;
+  y: number;
+  direction: string;
+  map: string[][];
+  command: string;
+};
+
 const directions: Directions = {
   W: { R: "N", L: "S" },
   E: { R: "S", L: "N" },
@@ -12,14 +22,7 @@ const clearPreviousIndex = (x: number, y: number, map: string[][]) => {
   map[x][y] = " ";
 };
 
-export const rover = (
-  name: string,
-  x: number,
-  y: number,
-  direction: string,
-  map: string[][],
-  command: string
-) => {
+export const rover = ({ name, x, y, direction, map, command }: Rover) => {
   const moveRover = () => {
     switch (direction) {
       case "W":
