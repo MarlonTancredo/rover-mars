@@ -14,23 +14,14 @@
 
 ```TypeScript
 //set map size 🗺️
-let mappedArea = mapArea(5, 5); //Set map with different sizes.
+let map = buildMap(5, 5);
 
-//Initial coordinate
-const x = 1;
-const y = 2;
-const direction = "N";
+//Rovers 🕹️
+rover("A", 1, 2, "N", map, "LMLMLMLMM");
+rover("B", 3, 3, "E", map, "MMRMMRMRRM");
+rover("C", 2, 3, "W", map, "MMR");
 
-//Passing map to rover
-getMap(mappedArea);
+//Print rover positions
+printRoverPosition(map);
 
-landingRover(x, y, direction); //Landing the rover 🪂
-
-movingRover("LMLMLMLMM"); //You can also pass a sequence of commands.
-
-movingRover("L"); //turn the rover to left. 🕹️
-
-movingRover("R");  //Turn the rover to the right. 🕹️
-
-movingRover("M"); //Move the rover to the direction where the rover is pointed. 🕹️
 ```
