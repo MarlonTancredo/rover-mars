@@ -1,12 +1,12 @@
 let map: string[][] = [];
 
 export const buildMap = (x: number, y: number): string[][] => {
-  for (let i = 0; i < x; i++) {
-    let square: string[] = [];
-    for (let j = 0; j < y; j++) {
-      square[j] = "---";
+    for (let i = 0; i < x; i++) {
+        let square: string[] = [];
+        for (let j = 0; j < y; j++) {
+            square[j] = "---";
+        }
+        map[i] = square;
     }
-    map[i] = square;
-  }
-  return map;
+    return map;
 };
